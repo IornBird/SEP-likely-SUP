@@ -1,0 +1,43 @@
+.DS_Store
+Thumbs.db
+
+# Build outputs
+**/target/
+target/
+bin/
+out/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+
+# NetBeans
+nbproject/private/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Other
+*.swp
+*~
