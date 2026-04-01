@@ -2,6 +2,18 @@
 
 **此文件由AI撰寫，個人強烈建議用Eclipse IDE建置**
 
+## 測試方法
+
+1. 使用Eclipse IDE，匯入此專案
+
+2. 開啟`src/test/java` → `exchange_rate`
+
+3. 右鍵點擊`ExchangeRateServiceTest.java`，看到選單
+
+4. 選單中找到「Run As」，然後點擊包含「JUnit Test」的選項
+
+![](./UnitTest.png)
+
 ## 📋 專案說明
 
 A9_ExchangeRate 是一個即時匯率轉換的JavaFX應用程式，支援美元、台幣、日圓、歐元和人民幣等五種主要貨幣的兌換計算。操作簡單直觀，是學習GUI開發與金融計算的絕佳範例。
