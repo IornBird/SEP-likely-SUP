@@ -15,7 +15,6 @@ public class Action {
 
             Cal_main.ans.setText(inp + from + " = " + ret + to);
         } catch(NumberFormatException n){
-            Cal_main.ans.setText("請輸入有效的數字");
         }
     }
 
