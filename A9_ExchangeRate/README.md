@@ -2,6 +2,24 @@
 
 **此文件由AI撰寫，個人強烈建議用Eclipse IDE建置**
 
+## release檔下載與執行方法
+
+1. 到GitHub右方Releases的欄位下，選擇`1 tags`
+
+2. 在頁面選擇`Sample-release`
+
+3. 在頁面下方Assets中，選擇`release.jar`
+
+**執行方法**
+
+可以用滑鼠點選啟動
+
+若要用CLI指令，可以用：
+
+```shell
+java -jar release.jar
+```
+
 ## 測試方法
 
 1. 使用Eclipse IDE，匯入此專案
