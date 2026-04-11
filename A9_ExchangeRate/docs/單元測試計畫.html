@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>匯率轉換服務 - 單元測試計畫</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background: #ffffff;
+    color: #111;
+    margin: 24px;
+  }
+
+  .test-case {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 28px;
+  }
+
+  .test-case td, .test-case th {
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    vertical-align: top;
+    font-weight: normal;
+  }
+
+  .label {
+    background: #FFF2CC;
+    width: 22%;
+    white-space: nowrap;
+  }
+
+  .value {
+    background: #ffffff;
+  }
+
+  .quat-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .quat-table th, .quat-table td {
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    font-weight: normal;
+  }
+
+  .quat-table th {
+    background: #FFF2CC;
+    text-align: left;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+</style>
+</head>
+<body>
+
+<h1>匯率轉換服務 - 單元測試計畫</h1>
+
+<!-- TestCase1: 同貨幣轉換 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase1</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">同貨幣轉換</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證同一種貨幣之間的轉換，應回傳相同金額</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣為 [美元, 台幣, 日圓, 歐元, 人民幣]，匯率為 [1, 29.42, 124.819687, 0.913381, 6.347357]</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(100, "美元", "美元")</td>
+            <td>回傳值 100.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase2: 美元轉台幣 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase2</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">美元轉台幣</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證美元轉台幣的匯率轉換是否正確</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(1, "美元", "台幣")</td>
+            <td>回傳值 29.42</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase3: 台幣轉美元 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase3</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">台幣轉美元</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證台幣轉美元的反向匯率轉換是否正確</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(29.42, "台幣", "美元")</td>
+            <td>回傳值 1.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase4: 美元轉日圓 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase4</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">美元轉日圓</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證美元轉日圓的匯率轉換是否正確</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(1, "美元", "日圓")</td>
+            <td>回傳值 124.819687</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase5: 美元轉歐元 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase5</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">美元轉歐元</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證美元轉歐元的匯率轉換是否正確</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(1, "美元", "歐元")</td>
+            <td>回傳值 0.913381</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase6: 美元轉人民幣 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase6</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">美元轉人民幣</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證美元轉人民幣的匯率轉換是否正確</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(1, "美元", "人民幣")</td>
+            <td>回傳值 6.347357</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase7: 轉換大金額 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase7</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">轉換大金額</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證轉換大金額時計算是否準確</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(1000, "美元", "台幣")</td>
+            <td>回傳值 29420.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase8: 轉換小數金額 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase8</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">轉換小數金額</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證轉換小數金額時計算是否準確</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(0.5, "美元", "台幣")</td>
+            <td>回傳值 14.71</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase9: 轉換零金額 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase9</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">轉換零金額</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證轉換金額為零時是否正確回傳零</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(0, "美元", "台幣")</td>
+            <td>回傳值 0.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase10: 非直接轉換 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase10</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">非直接轉換</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證非直接轉換（透過美元轉接）是否正確</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(1, "台幣", "歐元")</td>
+            <td>回傳值為 1.0 × 0.913381 ÷ 29.42 = 0.031019...</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase11: 無效的來源貨幣 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase11</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">無效的來源貨幣應拋出例外</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證轉換時若來源貨幣無效，是否拋出 IllegalArgumentException</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(100, "無效貨幣", "美元")</td>
+            <td>拋出 IllegalArgumentException</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase12: 無效的目標貨幣 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase12</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">無效的目標貨幣應拋出例外</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證轉換時若目標貨幣無效，是否拋出 IllegalArgumentException</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.convert(100, "美元", "無效貨幣")</td>
+            <td>拋出 IllegalArgumentException</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">convert() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase13: getCurrencies 回傳所有支援貨幣 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase13</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">getCurrencies 回傳所有支援貨幣</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證 getCurrencies 是否正確回傳所有支援的貨幣陣列</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化為 [美元, 台幣, 日圓, 歐元, 人民幣]</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.getCurrencies()</td>
+            <td>回傳 [美元, 台幣, 日圓, 歐元, 人民幣]</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">getCurrencies() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase14: getCurrencies 回傳新陣列副本 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase14</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">getCurrencies 回傳新陣列副本</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證 getCurrencies 每次都回傳新的陣列副本，不是同一物件</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化為 [美元, 台幣, 日圓, 歐元, 人民幣]</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>result1 = service.getCurrencies()
+result2 = service.getCurrencies()</td>
+            <td>result1 和 result2 的內容相同，但非同一物件參考</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">getCurrencies() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase15: 取得貨幣匯率 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase15</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">取得貨幣匯率</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證 getRate 是否正確回傳指定貨幣的匯率</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.getRate("美元")</td>
+            <td>回傳 1.0</td>
+          </tr>
+          <tr>
+            <td>service.getRate("台幣")</td>
+            <td>回傳 29.42</td>
+          </tr>
+          <tr>
+            <td>service.getRate("日圓")</td>
+            <td>回傳 124.819687</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">getRate() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase16: 取得無效貨幣匯率 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase16</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">取得無效貨幣匯率應拋出例外</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證 getRate 若查詢無效貨幣，是否拋出 IllegalArgumentException</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">建立 ExchangeRateService 物件，初始化支援的貨幣與匯率</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>service.getRate("無效貨幣")</td>
+            <td>拋出 IllegalArgumentException</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">getRate() 方法</td>
+  </tr>
+</table>
+
+<!-- TestCase17: 建構子 - 貨幣數與匯率數不符 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase17</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">建構子 - 貨幣數與匯率數不符應拋出例外</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證建構子若接收的貨幣陣列與匯率陣列長度不符，是否拋出 IllegalArgumentException</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">準備不對稱的貨幣和匯率陣列</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>new ExchangeRateService([美元, 台幣], [1, 29.42, 124.819687])</td>
+            <td>拋出 IllegalArgumentException</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">ExchangeRateService 建構子</td>
+  </tr>
+</table>
+
+<!-- TestCase18: 建構子 - 空陣列 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">TestCase18</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">建構子 - 空陣列應拋出例外</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證建構子若接收空陣列，是否拋出 IllegalArgumentException</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">準備空的貨幣和匯率陣列</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>輸入參數</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>new ExchangeRateService([], [])</td>
+            <td>拋出 IllegalArgumentException</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">測試目標</td>
+    <td class="value">ExchangeRateService 建構子</td>
+  </tr>
+</table>
+
+</body>
+</html>
