@@ -16,6 +16,7 @@ public class Action {
 
             app.ans.setText(inp + from + " = " + ret + to);
         } catch(NumberFormatException n){
+            app.ans.setText("請輸入有效的數字");
         }
     }
 
