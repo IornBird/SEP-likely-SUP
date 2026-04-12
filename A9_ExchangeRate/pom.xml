@@ -60,8 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>stu_110502521.a9_110502521/stu_110502521.a9_110502521.HelloApplication
-                            </mainClass>
+                            <mainClass>exchange_rate.Cal_main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

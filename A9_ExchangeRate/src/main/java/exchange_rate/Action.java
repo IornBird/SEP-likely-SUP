@@ -7,21 +7,24 @@ public class Action {
     );
 
     static void convert(){
+        Cal_main app = Cal_main.getInstance();
         try {
-            String from = (String) Cal_main.from.getValue();
-            String to = (String) Cal_main.to.getValue();
-            double inp = Double.valueOf(Cal_main.inp.getText());
+            String from = app.from.getValue();
+            String to = app.to.getValue();
+            double inp = Double.valueOf(app.inp.getText());
             double ret = SERVICE.convert(inp, from, to);
 
-            Cal_main.ans.setText(inp + from + " = " + ret + to);
+            app.ans.setText(inp + from + " = " + ret + to);
         } catch(NumberFormatException n){
+            app.ans.setText("請輸入有效的數字");
         }
     }
 
     static void exchange(){
-        Object from = Cal_main.from.getValue(),
-                to  = Cal_main.to.getValue();
-        Cal_main.from.setValue(to);
-        Cal_main.to.setValue(from);
+        Cal_main app = Cal_main.getInstance();
+        String from = app.from.getValue(),
+                to = app.to.getValue();
+        app.from.setValue(to);
+        app.to.setValue(from);
     }
 }
