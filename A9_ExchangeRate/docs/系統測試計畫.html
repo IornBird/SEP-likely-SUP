@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>匯率轉換器 - 系統測試計畫</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background: #ffffff;
+    color: #111;
+    margin: 24px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .test-case {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 28px;
+  }
+
+  .test-case td, .test-case th {
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    vertical-align: top;
+    font-weight: normal;
+  }
+
+  .label {
+    background: #C5DFB3;
+    width: 22%;
+    white-space: nowrap;
+  }
+
+  .value {
+    background: #ffffff;
+  }
+
+  .quat-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .quat-table th, .quat-table td {
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    font-weight: normal;
+  }
+
+  .quat-table th {
+    background: #C5DFB3;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+
+<h1>匯率轉換器 - 系統測試計畫</h1>
+
+<!-- SystemTest1: 基本轉換功能 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">SystemTest1</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">基本轉換功能 - 美元轉台幣</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證應用程式能否正確執行匯率轉換，並在結果欄位顯示轉換結果</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">啟動匯率轉換器應用程式，確保視窗已出現且所有控制項可用</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>測試程序</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>在輸入欄位(TextField)中輸入 100</td>
+            <td>輸入欄位顯示 100</td>
+          </tr>
+          <tr>
+            <td>確認「來源貨幣」ComboBox 已選擇「美元」，「目標貨幣」ComboBox 已選擇「台幣」</td>
+            <td>兩個 ComboBox 分別顯示「美元」與「台幣」</td>
+          </tr>
+          <tr>
+            <td>點擊「轉換」按鈕</td>
+            <td>結果欄位 (Label) 顯示 "100.0美元 = 2942.0台幣"</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">結束狀態</td>
+    <td class="value">點擊視窗右上角的關閉按鈕 (X) 關閉應用程式</td>
+  </tr>
+</table>
+
+<!-- SystemTest2: 交換貨幣功能 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">SystemTest2</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">交換貨幣功能</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證「↔」交換按鈕能正確交換「來源貨幣」和「目標貨幣」的選擇</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">啟動匯率轉換器應用程式；從「來源貨幣」下拉選單中選擇「台幣」；從「目標貨幣」下拉選單中選擇「日圓」</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>測試程序</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>確認「來源貨幣」為「台幣」，「目標貨幣」為「日圓」</td>
+            <td>兩個 ComboBox 分別顯示「台幣」與「日圓」</td>
+          </tr>
+          <tr>
+            <td>點擊「↔」按鈕</td>
+            <td>「來源貨幣」ComboBox 變為「日圓」，「目標貨幣」ComboBox 變為「台幣」</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">結束狀態</td>
+    <td class="value">關閉應用程式視窗</td>
+  </tr>
+</table>
+
+<!-- SystemTest3: 小數金額轉換 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">SystemTest3</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">小數金額轉換</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證應用程式能正確處理小數金額的匯率轉換</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">啟動匯率轉換器應用程式；確認「來源貨幣」為「美元」，「目標貨幣」為「歐元」</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>測試程序</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>在輸入欄位中輸入 2.5</td>
+            <td>輸入欄位顯示 2.5</td>
+          </tr>
+          <tr>
+            <td>點擊「轉換」按鈕</td>
+            <td>結果欄位顯示 "2.5美元 = 2.2834525歐元" (或類似計算結果)</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">結束狀態</td>
+    <td class="value">關閉應用程式視窗</td>
+  </tr>
+</table>
+
+<!-- SystemTest4: 無效輸入處理 -->
+<table class="test-case">
+  <tr>
+    <td class="label">測試案例編號</td>
+    <td class="value">SystemTest4</td>
+  </tr>
+  <tr>
+    <td class="label">測試案例</td>
+    <td class="value">無效輸入處理</td>
+  </tr>
+  <tr>
+    <td class="label">測試目的</td>
+    <td class="value">驗證應用程式能優雅地處理無效的數值輸入，不會當機且結果欄位無異常更新</td>
+  </tr>
+  <tr>
+    <td class="label">事前準備</td>
+    <td class="value">啟動匯率轉換器應用程式；確認所有控制項處於初始狀態</td>
+  </tr>
+  <tr>
+    <td class="label">步驟</td>
+    <td class="value">
+      <table class="quat-table">
+        <thead>
+          <tr>
+            <th>測試程序</th>
+            <th>預期結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>在輸入欄位中輸入 abc (非數值字元)</td>
+            <td>輸入欄位顯示 abc</td>
+          </tr>
+          <tr>
+            <td>點擊「轉換」按鈕</td>
+            <td>應用程式不會當機；結果欄位保持前次結果或維持空白，無錯誤訊息顯示</td>
+          </tr>
+          <tr>
+            <td>清除輸入欄位並輸入 0</td>
+            <td>輸入欄位顯示 0</td>
+          </tr>
+          <tr>
+            <td>點擊「轉換」按鈕</td>
+            <td>結果欄位顯示 "0.0美元 = 0.0台幣"（或對應的目標貨幣為 0）</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">結束狀態</td>
+    <td class="value">關閉應用程式視窗</td>
+  </tr>
+</table>
+
+</body>
+</html>
